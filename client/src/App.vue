@@ -6,15 +6,9 @@ import Navbar from "./components/NavBar/Navbar.vue";
   <div class="App_Container">
     <Navbar />
 
-    <div
-      v-masonry="containerId"
-      transition-duration="0.3s"
-      item-selector=".item"
-    >
-      <div v-masonry-tile class="item" v-for="item in images">
-        <img src="item.image" alt="">
-      </div>
-    </div>
+    <masonry :cols="3" :gutter="30">
+      <!-- <div v-for="(item, index) in items" :key="index">{{ item.id }}</div> -->
+    </masonry>
   </div>
 </template>
 
@@ -28,7 +22,7 @@ export default {
   },
   data() {
     return {
-      images: [
+      items: [
         {
           id: "5dbac075-f0b1-4a8f-8376-1b4c874ac2fc",
           label: "Silver-backed jackal",

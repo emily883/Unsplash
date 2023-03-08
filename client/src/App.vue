@@ -5,10 +5,14 @@ import Navbar from "./components/NavBar/Navbar.vue";
 <template>
   <div class="App_Container">
     <Navbar />
-
-    <masonry :cols="3" :gutter="30">
-      <!-- <div v-for="(item, index) in items" :key="index">{{ item.id }}</div> -->
-    </masonry>
+    <ui-image-list type="masonry">
+      <ui-image-item
+        v-for="(item, index) in items"
+        :key="index"
+        :image="item.image"
+      >
+      </ui-image-item>
+    </ui-image-list>
   </div>
 </template>
 

@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import UiImageListComponents from 'balm-ui/components/image-list';
+// import Bootstrap 
+import '../src/scss/styles.scss'
 
-let app = createApp(App)
-app.use(UiImageListComponents);
+
+
+let app = createApp(App);
+
+
 app.mount('#app')
 

@@ -1,31 +1,28 @@
 <script setup>
+import Images from "./components/Images/Images.vue";
 import Navbar from "./components/NavBar/Navbar.vue";
 </script>
 
 <template>
   <div class="App_Container">
     <Navbar />
-    <ui-image-list type="masonry">
-      <ui-image-item
-        v-for="(item, index) in items"
-        :key="index"
-        :image="item.image"
-      >
-      </ui-image-item>
-    </ui-image-list>
+    <Images :items="items" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
 
 <script>
 export default {
   name: "app",
   components: {
     Navbar,
-  },
+    Images
+},
   data() {
     return {
+      xd: [],
       items: [
         {
           id: "5dbac075-f0b1-4a8f-8376-1b4c874ac2fc",

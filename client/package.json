@@ -9,12 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "balm-ui": "^10.16.0",
-    "vue": "^3.2.45",
-    "vuetify": "^3.1.7"
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "4.6",
+    "vue": "^3.2.45"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "sass": "^1.58.3",
     "vite": "^4.1.0"
   }
 }

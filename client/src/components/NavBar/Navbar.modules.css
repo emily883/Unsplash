@@ -1,3 +1,13 @@
+@media only screen and (max-width: 600px) {
+  .NavBarContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw 3vw;
+    align-items: center;
+  }
+}
+
+
 .NavBarContainer {
   display: flex;
   justify-content: space-between;
@@ -17,7 +27,7 @@
   border: 1px solid #bdbdbd;
   filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
   border-radius: 12px;
-  padding: 10px 10px 10px 0px;
+  padding: 6px 6px 6px 0px;
 }
 
 #SearchIcon {
@@ -40,9 +50,11 @@
 .Add_Photo_button {
   background-color: #3db46d;
   border: none;
-  padding: 1vw;
+  padding: 0.5vw;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   color: white;
   font-weight: 700;
 }
+
+

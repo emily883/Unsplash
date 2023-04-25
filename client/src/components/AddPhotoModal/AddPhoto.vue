@@ -1,19 +1,36 @@
 <template>
   <div class="Modal">
     <div class="Titulo"><span>Add a new Photo</span></div>
-
-    <div class="Label">
-      <span class="LabelText">Label</span>
-      <div class="LabelInput">
-        <input class="InputLabel" type="name" required />
+    <form @submit.prevent="submit">
+      <div class="Label">
+        <span class="LabelText">Label</span>
+        <div class="LabelInput">
+          <input
+            class="InputLabel"
+            type="name"
+            @change="OnChange($event)"
+            name="label"
+            required
+          />
+        </div>
       </div>
-    </div>
-    <div class="PhotoUrl">
-      <div class="PhotoUrlText">Photo URL</div>
-      <div class="PhotoUrlInput">
-        <input class="InputPhoto" type="text" required />
+      <div class="PhotoUrl">
+        <div class="PhotoUrlText">Photo URL</div>
+        <div class="PhotoUrlInput">
+          <input
+            class="InputPhoto"
+            type="text"
+            name="image"
+            @change="OnChange($event)"
+            required
+          />
+        </div>
       </div>
-    </div>
+      <div class="Buttons">
+        <button class="CancelButton" @click="modal.closeModal">Cancel</button>
+        <button class="SubmitButton" @click="">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -29,14 +46,24 @@
 </style>
 
 <script>
-import { storeItems } from "../../store";
+import { modal } from "../../store";
 
 export default {
   name: "AddModal",
   data() {
     return {
-      storeItems,
+      modal,
+      data: {},
     };
+  },
+  methods: {
+    submit() {
+      console.log(this.data);
+      modal.closeModal();
+    },
+    OnChange(event) {
+      this.data[event.target.name] = event.target.value;
+    },
   },
 };
 </script>

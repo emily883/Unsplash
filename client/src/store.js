@@ -46,7 +46,11 @@ export const storeItems = reactive({
     // Receive {label: "sdf", image: "imageLink"}
     // Whatever function to add and item
     // item["id"] = uuidv4();
-    // console.log(item);
+    var imagen = {
+      id: uuidv4(),
+      ...item
+    }
+    console.log(imagen);
   },
 
   deleteItem() {
@@ -60,6 +64,6 @@ export const modal = reactive({
     this.showModal = true;
   },
   closeModal() {
-    this.closeModal = false;
+    this.showModal = false;
   },
 });

@@ -2,16 +2,17 @@
   .NavBarContainer {
     display: flex;
     justify-content: space-between;
-    margin: 2vw 3vw;
+    /* margin: 2vw 3vw; */
+    padding: 2vw 3vw;
     align-items: center;
   }
 }
 
-
 .NavBarContainer {
   display: flex;
   justify-content: space-between;
-  margin: 2vw 3vw;
+  /* margin: 2vw 3vw; */
+  padding: 2vw 3vw;
   align-items: center;
 }
 
@@ -24,7 +25,7 @@
   display: flex;
   margin-left: 1vw;
   align-items: center;
-  border: 1px solid #bdbdbd;
+  border: 1px solid rgba(189, 189, 189, 1);
   filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.1));
   border-radius: 12px;
   padding: 6px 6px 6px 0px;
@@ -56,5 +57,3 @@
   color: white;
   font-weight: 700;
 }
-
-

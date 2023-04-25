@@ -6,31 +6,36 @@ import { storeItems, modal } from "./store";
 </script>
 
 <template>
-  <div class="ModalContainer">
-    <AddPhoto v-show="modal.showModal" class="ModalPhoto" />
+  <div
+    v-if="modal.showModal"
+    class="ModalContainer"
+    :style="[
+      modal.showModal
+        ? { 'background-color': 'rgba(0, 0, 0, 0.25)' }
+        : none,
+    ]"
+    @scroll.prevent
+    @wheel.prevent
+    @touchmove.prevent
+  >
+    <AddPhoto class="ModalPhoto" />
   </div>
   <div class="App_Container">
-    <Navbar
-      class="NavBar"
-      v-bind:style="[
-        modal.showModal
-          ? { 'background-color': 'red' }
-          : { 'background-color': 'blue' },
-      ]"
-    />
+    <Navbar class="NavBar" />
     <Images :items="storeItems.items" class="Images" />
   </div>
 </template>
 
 <style scoped>
-.NavBar .Images {
-}
 .ModalContainer {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
 .ModalPhoto {
-  /* margin-top: 5vw; */
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;

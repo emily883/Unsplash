@@ -7,7 +7,12 @@
           src="../../assets/SearchIcon.svg"
           alt="Search Logo Icon"
           id="SearchIcon"
-        /><input id="Input_search" type="text" placeholder="Search by name" />
+        /><input
+          id="Input_search"
+          type="text"
+          placeholder="Search by name"
+          @input="onChange($event)"
+        />
       </div>
     </div>
     <button class="Add_Photo_button" @click="modal.openModal">
@@ -20,13 +25,23 @@
 <style src="./Navbar.modules.css"></style>
 
 <script>
-import { modal } from "../../store";
+import { modal, storeItems } from "../../store";
+const { setSearchTerm } = storeItems;
 
 export default {
   name: "Navbar",
   data() {
     return {
       modal,
+      storeItems,
+    };
+  },
+  setup() {
+    const onChange = (event) => {
+      setSearchTerm(event.target.value);
+    };
+    return {
+      onChange,
     };
   },
 };

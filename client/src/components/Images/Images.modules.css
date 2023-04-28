@@ -1,0 +1,8 @@
+.card {
+    border: none;
+    margin-top: 1.7vw;
+    width: 50vw;
+  }
+  .card-columns {
+    margin: 1vw 5vw 3vw 5vw;
+  }

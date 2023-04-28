@@ -9,14 +9,13 @@ export const storeItems = reactive({
   async loadItems() {
     try {
       const response = (await axios.get(`${BackEndUrl}/list`)).data;
-      this.items = response;
-      console.log("carga")
+      storeItems.items = response;
     } catch (error) {
       console.log(error);
     }
   },
 
-  addItem(item) {
+  async addItem(item) {
     // Receive {label: "sdf", image: "imageLink"}
     // Whatever function to add and item
     // item["id"] = uuidv4();
@@ -24,7 +23,11 @@ export const storeItems = reactive({
       id: uuidv4(),
       ...item,
     };
-    // console.log(imagen);
+    try {
+      await axios.post(`${BackEndUrl}/image`, imagen);
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   deleteItem() {

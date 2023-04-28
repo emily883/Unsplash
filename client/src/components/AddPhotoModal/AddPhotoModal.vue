@@ -8,7 +8,7 @@
           <input
             class="InputLabel"
             type="name"
-            @change="OnChange($event)"
+            v-model="data.label"
             name="label"
             required
           />
@@ -21,14 +21,14 @@
             class="InputPhoto"
             type="text"
             name="image"
-            @change="OnChange($event)"
+            v-model="data.image"
             required
           />
         </div>
       </div>
       <div class="Buttons">
-        <button class="CancelButton" @click="modal.closeModal">Cancel</button>
-        <button class="SubmitButton" @click="">Submit</button>
+        <button class="CancelButton" type="button" @click="modal.closeModal">Cancel</button>
+        <button class="SubmitButton" type="submit">Submit</button>
       </div>
     </form>
   </div>
@@ -46,7 +46,7 @@
 </style>
 
 <script>
-import { modal } from "../../store";
+import { modal, storeItems } from "../../store";
 
 export default {
   name: "AddModal",
@@ -58,11 +58,8 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.data);
+      storeItems.addItem(this.data);
       modal.closeModal();
-    },
-    OnChange(event) {
-      this.data[event.target.name] = event.target.value;
     },
   },
 };

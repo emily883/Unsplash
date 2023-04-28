@@ -1,24 +1,30 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import { ParamsDictionary } from "express-serve-static-core";
 
 const prisma = new PrismaClient();
+/*
+Manage exceptions, to be more specifics
+manage db error more specifics
+*/
 
 // Get All Images
-export const getAllImages = async (req: Request, res: Response) => {
+export const getAllImages = async (request: Request, response: Response) => {
   try {
     const images = await prisma.image.findMany();
-    res.json(images);
+
+    response.json(images);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error getting images" });
+    response.status(500).json({ message: "Error getting images" });
   }
 };
 
-// Crear una nueva imagen
-export const createImage = async (req: Request, res: Response) => {
-  const { label, image, id } = req.body;
+// Create a New Image
+export const createImage = async (request: Request, response: Response) => {
+  const { label, image, id } = request.body;
   if (!label || !image || !id) {
-    return res
+    return response
       .status(400)
       .json({ message: "Data are missing to create the image" });
   }
@@ -31,9 +37,32 @@ export const createImage = async (req: Request, res: Response) => {
         image: image,
       },
     });
-    res.status(200);
+    response.status(200);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error al crear imagen" });
+    response.status(500).json({ message: "Error at creating the image" });
+  }
+};
+
+export const deleteImage = async (
+  request: Request<ParamsDictionary>,
+  response: Response
+) => {
+  const { id } = request.params;
+
+  if (!id) {
+    return response
+      .status(400)
+      .json({ message: "ID is missing to delete the image" });
+  }
+  try {
+    await prisma.image.delete({
+      where: {
+        id,
+      },
+    });
+    response.status(200).send();
+  } catch (error) {
+    response.status(500).send(error);
   }
 };

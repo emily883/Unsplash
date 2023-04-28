@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllImages, createImage } from "../controllers/imageController";
+import { getAllImages, createImage, deleteImage } from "../controllers/imageController";
 
 const router = express.Router();
 
@@ -10,6 +10,6 @@ router.get("/list", getAllImages);
 router.post("/image", createImage);
 
 // Delete an Image
-// router.delete("/image/:id", deleteImage);
+router.delete("/image/:id", deleteImage);
 
 export default router;

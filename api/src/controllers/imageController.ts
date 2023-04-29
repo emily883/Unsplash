@@ -37,7 +37,7 @@ export const createImage = async (request: Request, response: Response) => {
         image: image,
       },
     });
-    response.status(200);
+    response.status(200).send();
   } catch (error) {
     console.log(error);
     response.status(500).json({ message: "Error at creating the image" });

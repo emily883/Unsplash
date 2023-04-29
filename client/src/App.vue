@@ -10,13 +10,15 @@
   </div>
   <div class="app-container">
     <Navbar class="nav-bar" />
-    <div v-if="isLoading">Cargando Fotos</div>
-    <Images
-      v-else-if="storeItems.items"
-      :items="storeItems.items.reverse()"
-      :searchTerm="storeItems.SearchTerm"
-      class="images"
-    />
+    <div v-if="storeItems.isLoading">Cargando Fotos</div>
+    <div v-else>
+      <Images
+        v-if="storeItems.items"
+        :items="storeItems.items.reverse()"
+        :searchTerm="storeItems.SearchTerm"
+        class="images"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,7 +30,6 @@ import Navbar from "./components/NavBar/Navbar.vue";
 import AddPhoto from "./components/AddPhotoModal/AddPhotoModal.vue";
 import { storeItems, modal } from "./store";
 const { loadItems } = storeItems;
-// var isLoading = true;
 
 export default {
   name: "app",
@@ -43,18 +44,8 @@ export default {
       storeItems,
     };
   },
-  async mounted() {
-    console.log("asdf");
-    await loadItems();
-    // this.isLoading = false;
+  beforeMount() {
+    loadItems();
   },
-  // watch: {
-  //   items: {
-  //     handler() {
-  //       this.$forceUpdate();
-  //     },
-  //     deep: true,
-  //   },
-  // },
 };
 </script>

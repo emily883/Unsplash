@@ -10,14 +10,16 @@
   </div>
   <div class="app-container">
     <Navbar class="nav-bar" />
-    <div v-if="storeItems.isLoading">Cargando Fotos</div>
-    <div v-else>
-      <Images
-        v-if="storeItems.items"
-        :items="storeItems.items.reverse()"
-        :searchTerm="storeItems.SearchTerm"
-        class="images"
-      />
+    <div class="body-container">
+      <div v-if="storeItems.isLoading">Cargando Fotos</div>
+      <div v-else>
+        <Images
+          v-if="storeItems.items"
+          :items="storeItems.items.reverse()"
+          :searchTerm="storeItems.SearchTerm"
+          class="images"
+        />
+      </div>
     </div>
   </div>
 </template>

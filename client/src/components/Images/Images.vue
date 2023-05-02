@@ -1,8 +1,14 @@
 <template>
   <div class="card-columns">
-    <div class="card border-0 custom-card" :key="item.id" v-for="item in filteredItems">
-      <card :images="item" />
-    </div>
+    <transition-group name="list">
+      <lazy-component
+        class="card border-0 custom-card"
+        :key="item.id"
+        v-for="item in filteredItems"
+      >
+        <card :images="item" />
+      </lazy-component>
+    </transition-group>
     <div v-if="noResults" class="no-results">{{ noResultsMessage }}</div>
   </div>
 </template>

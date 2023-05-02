@@ -1,7 +1,11 @@
 <template>
-  <div class="Modal">
-    <div class="Titulo"><span>Add a new Photo</span></div>
-    <form @submit.prevent="submit">
+  <div class="modal">
+    <div class="Titulo">
+      <span>Add a new Photo</span>
+      <div class="Close rounded-circle" @click="modal.closeModal"><div>x</div></div>
+    </div>
+
+    <div class="Inputs">
       <div class="Label">
         <span class="LabelText">Label</span>
         <div class="LabelInput">
@@ -26,24 +30,17 @@
           />
         </div>
       </div>
-      <div class="Buttons">
-        <button class="CancelButton" type="button" @click="modal.closeModal">Cancel</button>
-        <button class="SubmitButton" type="submit">Submit</button>
-      </div>
-    </form>
+    </div>
+    <div class="Buttons">
+      <button class="CancelButton" type="button" @click="modal.closeModal">
+        Cancel
+      </button>
+      <button class="SubmitButton" type="submit">Submit</button>
+    </div>
   </div>
 </template>
 
-<style scoped>
-.Modal {
-  position: absolute;
-  display: flex;
-  width: 35vw;
-  height: 40vh;
-  background-color: red;
-  flex-direction: column;
-}
-</style>
+<style src="./AddPhotoModal.modules.css"></style>
 
 <script>
 import { modal, storeItems } from "../../store";

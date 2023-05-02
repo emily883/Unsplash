@@ -1,5 +1,5 @@
-@media only screen and (max-width: 600px) {
-}
+/* @media only screen and (max-width: 600px) {
+} */
 
 .card-columns {
   @media only screen and (min-width: 992px) {
@@ -13,4 +13,16 @@
 .card-columns {
   margin: 1vw 5vw 3vw 5vw;
   padding: 1vw 5vw 3vw 5vw;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-move,
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }

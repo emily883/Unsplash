@@ -22,10 +22,11 @@
         type="text"
         placeholder="Search by name"
         @input="onChange($event)"
+        :disabled="modal.showModal"
       />
     </div>
     <div class="button">
-      <button class="add-photo-button">Add a photo</button>
+      <button class="add-photo-button" @click="modal.openModal">Add a photo</button>
       <button class="add-photo-button-mobile" @click="modal.openModal">
         <img src="../../assets/plus.svg" alt="Plus Button" id="plus-icon" />
       </button>

@@ -2,7 +2,9 @@
   <div class="modal">
     <div class="Titulo">
       <span>Add a new Photo</span>
-      <div class="Close rounded-circle" @click="modal.closeModal"><div>x</div></div>
+      <div class="Close rounded-circle" @click="modal.closeModal">
+        <div>x</div>
+      </div>
     </div>
 
     <div class="Inputs">
@@ -14,6 +16,7 @@
             type="name"
             v-model="data.label"
             name="label"
+            @blur="scrollDown"
             required
           />
         </div>
@@ -26,6 +29,7 @@
             type="text"
             name="image"
             v-model="data.image"
+            @blur="scrollDown"
             required
           />
         </div>
@@ -57,6 +61,13 @@ export default {
     submit() {
       storeItems.addItem(this.data);
       modal.closeModal();
+    },
+    scrollDown() {
+      window.scrollTo({
+        // Then go to the initial position before the focus
+        top: 0,
+        behavior: "smooth",
+      });
     },
   },
 };

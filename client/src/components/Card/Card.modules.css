@@ -1,3 +1,10 @@
+@media only screen and (max-width: 600px) {
+  #DeleteButton {
+    margin: 5vw 15vw !important;
+    border: none !important;
+  }
+}
+
 .hover {
   position: absolute;
   width: 100%;
@@ -10,6 +17,7 @@
 }
 
 #DeleteButton {
+  display: block;
   color: #eb5757;
   background: transparent;
   border-color: #eb5757;
@@ -31,6 +39,6 @@
   line-height: 22px;
 }
 
-img.card-img.custom-img{
+img.card-img.custom-img {
   border-radius: 1rem;
 }

@@ -1,6 +1,6 @@
 @media only screen and (max-width: 600px) {
   .navbar-container {
-    padding: 8vw 7vw 5vw 7vw;
+    padding: 8vw 7vw 5vw 7vw !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,6 +12,10 @@
 
   .large-logo {
     display: none;
+  }
+
+  .add-photo-button-mobile{
+    display: flex !important;
   }
 
   .logo-responsive {
@@ -43,7 +47,8 @@
     display: flex;
     align-items: center;
     background-color: rgba(247, 244, 244, 0.781);
-    padding: 1.5vw 1.5vw 1.5vw 4vw;
+    border: none !important;
+    padding: 1.5vw 1.5vw 1.5vw 4vw !important;
     border-radius: 12px;
     transition: transform 0.3s ease-in-out;
     margin: 0vw 1vw 0vw 5vw;
@@ -151,4 +156,4 @@
 
 .add-photo-button:hover{
   transform: scale(1.1);
-}
+} 

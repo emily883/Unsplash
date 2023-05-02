@@ -17,6 +17,7 @@
             v-model="data.label"
             name="label"
             @blur="scrollDown"
+            placeholder="Suspendisse elit massa"
             required
           />
         </div>
@@ -30,6 +31,7 @@
             name="image"
             v-model="data.image"
             @blur="scrollDown"
+            placeholder="https://images.unsplash.com/photo-1584395630827-860eee694d7b?ixlib=r..."
             required
           />
         </div>
@@ -39,7 +41,7 @@
       <button class="CancelButton" type="button" @click="modal.closeModal">
         Cancel
       </button>
-      <button class="SubmitButton" type="submit">Submit</button>
+      <button class="SubmitButton" type="submit" @click="submit">Submit</button>
     </div>
   </div>
 </template>

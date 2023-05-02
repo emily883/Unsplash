@@ -16,7 +16,7 @@
 <style src="./Images.modules.css"></style>
 
 <script>
-import card from "../card/card.vue";
+import card from '../Card/Card.vue';
 
 export default {
   name: "Images",

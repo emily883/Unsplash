@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.38);
-  border-radius: 0.3rem;
+  border-radius: 1rem;
 }
 
 #DeleteButton {
@@ -31,6 +31,6 @@
   line-height: 22px;
 }
 
-.custom-Img {
-  border: none;
+img.card-img.custom-img{
+  border-radius: 1rem;
 }

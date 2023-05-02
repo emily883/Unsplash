@@ -1,8 +1,15 @@
-.card {
-  border: none;
-  margin-top: 1.7vw;
-  width: 50vw;
+@media only screen and (max-width: 600px) {
 }
+
+.card-columns {
+  @media only screen and (min-width: 992px) {
+    column-count: 4;
+  }
+  @media only screen and (min-width: 1200px) {
+    column-count: 5;
+  }
+}
+
 .card-columns {
   margin: 1vw 5vw 3vw 5vw;
   padding: 1vw 5vw 3vw 5vw;

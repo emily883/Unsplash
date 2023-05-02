@@ -6,12 +6,19 @@
     @wheel.prevent
     @touchmove.prevent
   >
-    <AddPhoto class="modal-photo" />
+    <AddModal class="modal-photo" />
   </div>
   <div class="app-container">
     <Navbar class="nav-bar" />
-    <div class="body-container">
-      <div v-if="storeItems.isLoading">Cargando Fotos</div>
+    <div class="body-container d-flex justify-content-center">
+      <div
+        v-if="storeItems.isLoading"
+        class="spinner-grow custom-spiner"
+        role="status"
+        style="width: 3rem; height: 3rem"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
       <div v-else>
         <Images
           v-if="storeItems.items"
@@ -29,7 +36,7 @@
 <script>
 import Images from "./components/Images/Images.vue";
 import Navbar from "./components/NavBar/Navbar.vue";
-import AddPhoto from "./components/AddPhotoModal/AddPhotoModal.vue";
+import AddModal from "./components/AddPhotoModal/AddPhotoModal.vue";
 import { storeItems, modal } from "./store";
 const { loadItems } = storeItems;
 
@@ -38,7 +45,7 @@ export default {
   components: {
     Navbar,
     Images,
-    AddPhoto,
+    AddModal,
   },
   data() {
     return {

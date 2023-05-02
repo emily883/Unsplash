@@ -7,7 +7,7 @@
       </div>
       <img
         :src="images.image"
-        class="card-img custom-Img rounded-lg"
+        class="card-img custom-img"
         alt="Imagen {{ images.label }}"
       />
     </div>
@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     deleteItem(Id) {
-      // console.log("nada");
       storeItems.deleteItem(Id);
     },
   },

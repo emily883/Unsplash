@@ -1,6 +1,6 @@
 <template>
   <div class="card-columns">
-    <div class="card border-0" :key="item.id" v-for="item in filteredItems">
+    <div class="card border-0 custom-card" :key="item.id" v-for="item in filteredItems">
       <card :images="item" />
     </div>
     <div v-if="noResults" class="no-results">{{ noResultsMessage }}</div>

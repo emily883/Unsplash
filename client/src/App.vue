@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div
     v-if="modal.showModal"
     class="modal-container"
@@ -38,7 +38,7 @@ import Images from "./components/Images/Images.vue";
 import Navbar from "./components/NavBar/Navbar.vue";
 import AddModal from "./components/AddPhotoModal/AddPhotoModal.vue";
 import { storeItems, modal } from "./store";
-const { loadItems } = storeItems;
+const { fetchItems } = storeItems;
 
 export default {
   name: "app",
@@ -53,8 +53,61 @@ export default {
       storeItems,
     };
   },
-  beforeMount() {
-    loadItems();
+  setup() {
+    fetchItems();
   },
 };
+</script> -->
+
+<template>
+  <div class="app-container">
+    <Navbar class="nav-bar" />
+    <div class="body-container d-flex justify-content-center">
+      <div
+        v-if="isLoading"
+        class="spinner-grow custom-spiner"
+        role="status"
+        style="width: 3rem; height: 3rem"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div v-else>
+        <Images v-if="Items" :items="Items.reverse()" class="images" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<style src="./App.modules.css"></style>
+
+<script>
+import Images from "./components/Images/Images.vue";
+import Navbar from "./components/NavBar/Navbar.vue";
+import AddModal from "./components/AddPhotoModal/AddPhotoModal.vue";
+
+export default {
+  name: "app",
+  components: {
+    Navbar,
+    Images,
+    AddModal,
+  },
+};
+</script>
+
+<script setup>
+import { onMounted, computed, ref } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+
+const isLoading = ref(true);
+const Items = ref([]);
+
+onMounted(async () => {
+  if (!Items[0]) {
+    await store.dispatch("fetchItems");
+    Items.value = store.getters.getItems;
+    isLoading.value = false;
+  }
+});
 </script>

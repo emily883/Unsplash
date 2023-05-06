@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="card-columns">
     <transition-group name="list">
       <lazy-component
@@ -42,7 +42,7 @@ export default {
   methods: {
     filterItems() {
       this.filteredItems = this.items.filter((item) =>
-        item.label.toLowerCase().includes(this.searchTerm.toLowerCase())
+        item.label?.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     },
   },
@@ -57,4 +57,42 @@ export default {
     },
   },
 };
+</script> -->
+
+
+<template>
+  <div class="card-columns">
+    <transition-group name="list">
+      <lazy-component
+        class="card border-0 custom-card"
+        :key="item.id"
+        v-for="item in items"
+      >
+        <card :images="item" />
+      </lazy-component>
+    </transition-group>
+    <!-- <div v-if="noResults" class="no-results">{{ noResultsMessage }}</div> -->
+  </div>
+</template>
+
+<style src="./Images.modules.css"></style>
+
+<script>
+import card from '../Card/Card.vue';
+
+export default {
+  name: "Images",
+  components: {
+    card,
+  },
+  props: {
+    items: Array,
+  },
+  data() {
+    return {
+      
+    };
+  },
+};
 </script>
+

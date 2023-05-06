@@ -82,14 +82,13 @@ export default {
         id="Input_search"
         type="text"
         placeholder="Search by name"
-        :disabled="modal.showModal"
+        :disabled="ModalStatus"
+        @input="onChange($event)"
       />
     </div>
     <div class="button">
-      <button class="add-photo-button" @click="modal.openModal">
-        Add a photo
-      </button>
-      <button class="add-photo-button-mobile" @click="modal.openModal">
+      <button class="add-photo-button" @click="openModal">Add a photo</button>
+      <button class="add-photo-button-mobile" @click="openModal">
         <img src="../../assets/plus.svg" alt="Plus Button" id="plus-icon" />
       </button>
     </div>
@@ -99,16 +98,31 @@ export default {
 <!-- Style -->
 <style src="./Navbar.modules.css"></style>
 
-<script>
-import { modal, storeItems } from "../../store";
+<script setup>
+import { useStore } from "vuex";
+import { ref } from "vue";
+const store = useStore();
 
+const ModalStatus = ref();
+
+computed: {
+  ModalStatus.value = store.getters.getModal;
+}
+</script>
+
+<script>
 export default {
   name: "Navbar",
   data() {
-    return {
-      modal,
-      storeItems,
-    };
+    return {};
+  },
+  methods: {
+    onChange(event) {
+      this.$emit("searching", event.target.value);
+    },
+    openModal() {
+      this.$store.dispatch("showModalView");
+    },
   },
 };
 </script>

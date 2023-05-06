@@ -59,18 +59,11 @@ export default {
 };
 </script> -->
 
-
 <template>
   <div class="card-columns">
-    <transition-group name="list">
-      <lazy-component
-        class="card border-0 custom-card"
-        :key="item.id"
-        v-for="item in items"
-      >
-        <card :images="item" />
-      </lazy-component>
-    </transition-group>
+    <div class="card border-0 custom-card" :key="item.id" v-for="item in items">
+      <card :images="item" />
+    </div>
     <!-- <div v-if="noResults" class="no-results">{{ noResultsMessage }}</div> -->
   </div>
 </template>
@@ -78,7 +71,7 @@ export default {
 <style src="./Images.modules.css"></style>
 
 <script>
-import card from '../Card/Card.vue';
+import card from "../Card/Card.vue";
 
 export default {
   name: "Images",
@@ -89,10 +82,7 @@ export default {
     items: Array,
   },
   data() {
-    return {
-      
-    };
+    return {};
   },
 };
 </script>
-

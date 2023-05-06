@@ -96,7 +96,7 @@ export default {
 </script>
 
 <script setup>
-import { onMounted, computed, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 
@@ -106,8 +106,14 @@ const Items = ref([]);
 onMounted(async () => {
   if (!Items[0]) {
     await store.dispatch("fetchItems");
-    Items.value = store.getters.getItems;
     isLoading.value = false;
   }
 });
+
+store.watch(
+  () => store.getters.getItems,
+  (items) => {
+    Items.value = items;
+  }
+);
 </script>

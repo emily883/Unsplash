@@ -72,7 +72,7 @@ export default {
         <span class="sr-only">Loading...</span>
       </div>
       <div v-else>
-        <Images v-if="Items" :items="Items.reverse()" class="images" />
+        <Images v-if="Items" :items="Items" class="images" />
       </div>
     </div>
   </div>

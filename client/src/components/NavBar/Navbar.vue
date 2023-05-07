@@ -101,6 +101,7 @@ export default {
 <script setup>
 import { useStore } from "vuex";
 import { ref } from "vue";
+import scrollDown from "../../functions.js";
 const store = useStore();
 
 const ModalStatus = ref();
@@ -113,14 +114,13 @@ computed: {
 <script>
 export default {
   name: "Navbar",
-  data() {
-    return {};
-  },
   methods: {
     onChange(event) {
+      scrollDown();
       this.$emit("searching", event.target.value);
     },
     openModal() {
+      scrollDown();
       this.$store.dispatch("showModalView");
     },
   },

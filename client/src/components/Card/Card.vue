@@ -17,7 +17,7 @@
 <style src="./Card.modules.css"></style>
 
 <script>
-import { storeItems } from "../../store";
+// import { storeItems } from "../../store";
 
 export default {
   name: "cards",

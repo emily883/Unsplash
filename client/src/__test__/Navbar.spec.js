@@ -100,7 +100,6 @@ describe("Navbar", () => {
 
     const addPhotoButton = wrapper.find(".button button");
     await addPhotoButton.trigger("click");
-    console.log(store.getters.getModal);
     expect(store.state.modal).toBeTruthy();
   });
   

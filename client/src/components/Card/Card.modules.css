@@ -1,6 +1,6 @@
 @media only screen and (max-width: 600px) {
   #DeleteButton {
-    margin: 5vw 15vw !important;
+    /* margin: 5vw 15vw !important; */
     border: none !important;
   }
 }
@@ -21,8 +21,8 @@
   color: #eb5757;
   background: transparent;
   border-color: #eb5757;
-  width: 3.5vw;
-  height: 2vw;
+  /* width: 3.5vw; */
+  /* height: 2vw; */
   white-space: nowrap;
   border: 1px solid #eb5757;
   border-radius: 38px;

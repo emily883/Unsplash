@@ -21,8 +21,8 @@
       </div>
       <div v-else>
         <Images
-          v-if="Items"
-          :items="Items"
+          v-if="Photos"
+          :items="Photos"
           :searchTerm="SearchTerm"
           class="images"
         />
@@ -61,7 +61,7 @@ export default {
       store.dispatch("changeIsLoading", false);
     });
 
-    // Every Time the getLoading change, the reactive variable change too | Using the computed function |
+    // Every Time the getLoading change, the reactive variable change too, and updating the data in the dom | Using the computed function |
     const isLoading = computed(() => {
       return store.getters.getLoading;
     });
@@ -70,15 +70,14 @@ export default {
       return store.getters.getModal;
     });
 
-    const Items = computed(() => {
-      console.log("detecto un cambio")
+    const Photos = computed(() => {
       return store.getters.getItems;
     });
 
     return {
       isLoading,
       ModalStatus,
-      Items,
+      Photos,
       SearchTerm,
     };
   },

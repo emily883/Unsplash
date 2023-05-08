@@ -1,52 +1,69 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-const BackEndUrl = import.meta.env.VITE_API_URL;
 import CONSTANTS from "./actionsConst.js";
+
+const BackEndUrl = import.meta.env.VITE_API_URL;
 
 export default createStore({
   state: {
     items: [],
     modal: false,
     isLoading: true,
+    error: null,
   },
   getters: {
-    // Get the state by using this getters, not use directly the store
     getItems: (state) => state.items,
     getModal: (state) => state.modal,
     getLoading: (state) => state.isLoading,
+    getError: (state) => state.error,
   },
   actions: {
-    // Actions are the logic part
     async fetchItems({ commit }) {
       try {
         const response = await axios.get(`${BackEndUrl}/list`);
-        commit(CONSTANTS.SET_ITEMS, response.data);
+        commit(CONSTANTS.SET_ITEMS, response.data.reverse());
       } catch (error) {
         console.log(error);
+        commit(CONSTANTS.SET_ERROR, "Error fetching items");
       }
     },
 
     async sendPhoto({ dispatch }, data) {
-      // Receive {label: "imageLabel", image: "asdfglink"}
-
-      var imagen = {
+      const imagen = {
         id: uuidv4(),
         ...data,
       };
 
       try {
         await axios.post(`${BackEndUrl}/image`, imagen);
-        console.log("se envio la fotico");
         dispatch("fetchItems");
       } catch (error) {
         console.log(error);
+        dispatch("setError", "Error sending photo");
+      }
+    },
+
+    async deletePhoto({ commit, dispatch, state }, id) {
+      try {
+        // Delete first the photo on the DOM
+        commit(
+          CONSTANTS.SET_ITEMS,
+          state.items.filter((item) => item.id !== id)
+        );
+
+        await axios.delete(`${BackEndUrl}/image/${id}`);
+        dispatch("fetchItems");
+      } catch (error) {
+        console.log(error);
+        dispatch("setError", "Error deleting photo");
       }
     },
 
     showModalView({ commit }) {
       commit(CONSTANTS.SHOW_MODAL_VIEW);
     },
+
     hideModalView({ commit }) {
       commit(CONSTANTS.HIDE_MODAL_VIEW);
     },
@@ -54,20 +71,30 @@ export default createStore({
     changeIsLoading({ commit }, status) {
       commit(CONSTANTS.ISLOADING, status);
     },
+
+    setError({ commit }, error) {
+      commit(CONSTANTS.SET_ERROR, error);
+    },
   },
   mutations: {
-    // Just to modify the store, do not add logic here
     SET_ITEMS(state, items) {
       state.items = items;
     },
+
     SHOW_MODAL_VIEW(state) {
       state.modal = true;
     },
+
     HIDE_MODAL_VIEW(state) {
       state.modal = false;
     },
+
     ISLOADING(state, status) {
       state.isLoading = status;
+    },
+
+    SET_ERROR(state, error) {
+      state.error = error;
     },
   },
 });

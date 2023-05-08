@@ -17,7 +17,7 @@
 <style src="./Card.modules.css"></style>
 
 <script>
-// import { storeItems } from "../../store";
+import { useStore } from "vuex";
 
 export default {
   name: "cards",
@@ -29,10 +29,16 @@ export default {
       hover: false,
     };
   },
-  methods: {
-    deleteItem(Id) {
-      storeItems.deleteItem(Id);
-    },
+  setup() {
+    const store = useStore();
+
+    function deleteItem(id) {
+      if (id) {
+        store.dispatch("deletePhoto", id);
+      }
+    }
+
+    return { deleteItem };
   },
 };
 </script>

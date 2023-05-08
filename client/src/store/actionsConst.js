@@ -3,6 +3,7 @@ const SHOW_MODAL_VIEW = "SHOW_MODAL_VIEW";
 const HIDE_MODAL_VIEW = "HIDE_MODAL_VIEW";
 const SUBMIT_PHOTO = "SUBMIT_PHOTO";
 const ISLOADING = "ISLOADING";
+const DEL_PHOTO = "DEL_PHOTO";
 
 export default {
   SET_ITEMS,
@@ -10,4 +11,5 @@ export default {
   HIDE_MODAL_VIEW,
   SUBMIT_PHOTO,
   ISLOADING,
+  DEL_PHOTO
 };

@@ -65,7 +65,7 @@ const close = () => {
 
 const submit = async () => {
   if (!data || !data.label || !data.image) {
-    alert("pon data");
+    alert("Please make sure that you put all the necesary data");
   } else {
     close();
     await store.dispatch("sendPhoto", data);

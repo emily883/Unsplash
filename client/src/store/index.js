@@ -56,7 +56,7 @@ export default createStore({
         dispatch("fetchItems");
       } catch (error) {
         console.log(error);
-        dispatch("setError", "Error deleting photo");
+        dispatch("setError", "Error deleting photo pleas refresh and try again");
       }
     },
 

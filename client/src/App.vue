@@ -17,7 +17,7 @@
         role="status"
         style="width: 3rem; height: 3rem"
       >
-        <span class="sr-only">Loading...</span>
+        <!-- <span class="sr-only"></span> -->
       </div>
       <div v-else>
         <Images

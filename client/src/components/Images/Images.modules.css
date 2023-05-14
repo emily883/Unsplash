@@ -15,6 +15,10 @@
   padding: 1vw 5vw 3vw 5vw;
 }
 
+.custom-card{
+  margin-bottom: 1vw;
+}
+
 .list-move,
 .list-enter-active,
 .list-leave-active {

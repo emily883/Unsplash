@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal1">
     <div class="Titulo">
       <span>Add a new Photo</span>
       <div class="Close rounded-circle" @click="close">

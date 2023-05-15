@@ -20,6 +20,9 @@
   }
   .modal-container{
     background-color: rgba(0, 0, 0, 0.363);
- 
+  }
+  .image-container{
+    width: 100%;
+    margin: 3vw 5.5vw 0vw 5.5vw;
   }
 }

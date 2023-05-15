@@ -23,10 +23,18 @@ export const getAllImages = async (request: Request, response: Response) => {
 // Create a New Image
 export const createImage = async (request: Request, response: Response) => {
   const { label, image, id } = request.body;
+  const regexCheckImage = /\.(gif|jpg|jpeg|tiff|png)$/i;
+
   if (!label || !image || !id) {
     return response
-      .status(400)
+      .sendStatus(400)
       .json({ message: "Data are missing to create the image" });
+  }
+
+  if (!regexCheckImage.test(image)) {
+    return response
+      .status(400)
+      .json({ message: "The given url is not an image" });
   }
 
   try {

@@ -30,16 +30,15 @@ export default createStore({
     },
 
     async sendPhoto({ dispatch }, data) {
-      const imagen = {
-        id: uuidv4(),
-        ...data,
-      };
-
       try {
+        const imagen = {
+          id: uuidv4(),
+          ...data,
+        };
         await axios.post(`${BackEndUrl}/image`, imagen);
         dispatch("fetchItems");
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         dispatch("setError", "Error sending photo");
       }
     },
@@ -56,7 +55,7 @@ export default createStore({
         dispatch("fetchItems");
       } catch (error) {
         console.log(error);
-        dispatch("setError", "Error deleting photo");
+        // dispatch("setError", "Error deleting photo");
       }
     },
 

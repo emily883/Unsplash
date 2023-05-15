@@ -10,6 +10,9 @@
   </div>
   <div class="app-container">
     <Navbar class="nav-bar" @searching="Search" />
+    <div v-if="Error" class="d-flex justify-content-center">
+      <Alert :message="Error" />
+    </div>
     <div class="body-container d-flex justify-content-center">
       <div
         v-if="isLoading"
@@ -19,7 +22,7 @@
       >
         <!-- <span class="sr-only"></span> -->
       </div>
-      <div v-else>
+      <div v-else class="image-container">
         <Images
           v-if="Photos"
           :items="Photos"
@@ -37,6 +40,7 @@
 import Images from "./components/Images/Images.vue";
 import Navbar from "./components/NavBar/Navbar.vue";
 import AddModal from "./components/AddPhotoModal/AddPhotoModal.vue";
+import Alert from "./components/Alert/Alert.vue";
 import { onMounted, ref, computed } from "vue";
 import { useStore } from "vuex";
 
@@ -46,6 +50,7 @@ export default {
     Navbar,
     Images,
     AddModal,
+    Alert,
   },
   methods: {
     Search(dataInputSearch) {
@@ -74,11 +79,16 @@ export default {
       return store.getters.getItems;
     });
 
+    const Error = computed(() => {
+      return store.getters.getError;
+    });
+
     return {
       isLoading,
       ModalStatus,
       Photos,
       SearchTerm,
+      Error,
     };
   },
 };

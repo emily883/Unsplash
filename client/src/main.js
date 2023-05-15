@@ -5,6 +5,8 @@ import App from "./App.vue";
 import VueLazyload from "vue-lazyload";
 import store from "./store/index";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+
 
 let app = createApp(App);
 

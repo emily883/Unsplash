@@ -51,6 +51,7 @@ export default {
     Images,
     AddModal,
     Alert,
+    Alert,
   },
   methods: {
     Search(dataInputSearch) {

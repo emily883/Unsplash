@@ -24,8 +24,8 @@ export default createStore({
         const response = await axios.get(`${BackEndUrl}/list`);
         commit(CONSTANTS.SET_ITEMS, response.data.reverse());
       } catch (error) {
-        console.log(error);
-        commit(CONSTANTS.SET_ERROR, "Error fetching items");
+        // console.log(error.response.data.message);
+        commit(CONSTANTS.SET_ERROR, error.response.data.message);
       }
     },
 
@@ -38,8 +38,8 @@ export default createStore({
         await axios.post(`${BackEndUrl}/image`, imagen);
         dispatch("fetchItems");
       } catch (error) {
-        // console.log(error);
-        dispatch("setError", "Error sending photo");
+        // console.log(error.response.data.message);
+        dispatch("setError", error.response.data.message);
       }
     },
 
@@ -54,8 +54,8 @@ export default createStore({
         await axios.delete(`${BackEndUrl}/image/${id}`);
         dispatch("fetchItems");
       } catch (error) {
-        console.log(error);
-        dispatch("setError", "Error deleting photo pleas refresh and try again");
+        console.log(error.response.data.message);
+        dispatch("setError", error.response.data.message);
       }
     },
 

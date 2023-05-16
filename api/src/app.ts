@@ -8,12 +8,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Response header middleware
-app.use((request: Request, response: Response, next: NextFunction) => {
-  response.setHeader("Content-Type", "application/json");
-
-  next();
-});
 
 // Routes
 import imagen from "./routes/imagen";

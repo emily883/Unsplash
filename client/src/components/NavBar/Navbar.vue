@@ -14,7 +14,7 @@
     <div class="Search_input">
       <img
         src="../../assets/SearchIcon.svg"
-        alt="Search Logo Icon"
+        alt=""
         id="SearchIcon"
       />
       <input
@@ -62,6 +62,8 @@ export default {
     openModal() {
       scrollDown();
       this.$store.dispatch("showModalView");
+      // Si estas leyendo esto, 
+      // que haces aca? :v
     },
   },
 };

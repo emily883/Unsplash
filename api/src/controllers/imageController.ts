@@ -1,12 +1,8 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
 import { ParamsDictionary } from "express-serve-static-core";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-/*
-Manage exceptions, to be more specifics
-manage db error more specifics
-*/
 
 // Get All Images
 export const getAllImages = async (request: Request, response: Response) => {
@@ -22,12 +18,19 @@ export const getAllImages = async (request: Request, response: Response) => {
 
 // Create a New Image
 export const createImage = async (request: Request, response: Response) => {
+  const lengthLimit = 20;
   const { label, image, id } = request.body;
   const regexCheckImage = /\.(gif|jpg|jpeg|tiff|png)$/i;
 
+  if (label.length >= lengthLimit) {
+    return response
+      .status(406)
+      .json({ message: "The label cannot exceed 20 letters" });
+  }
+
   if (!label || !image || !id) {
     return response
-      .sendStatus(400)
+      .status(400)
       .json({ message: "Data are missing to create the image" });
   }
 
@@ -52,6 +55,7 @@ export const createImage = async (request: Request, response: Response) => {
   }
 };
 
+// Delete an image by the id given, param named 'id'
 export const deleteImage = async (
   request: Request<ParamsDictionary>,
   response: Response

@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 
-export const app = express();
+const app = express();
 
 // Middlewares
 app.use(cors());
@@ -14,4 +14,4 @@ import imagen from "./routes/imagen";
 
 app.use("/", imagen);
 
-module.exports = app;
+export default app

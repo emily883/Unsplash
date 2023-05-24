@@ -3,6 +3,7 @@
     margin: 1vw 0vw 3vw 0vw !important;
     padding: 0 !important;
     width: 100% !important;
+    column-count: 3;
   }
 
   .custom-card {

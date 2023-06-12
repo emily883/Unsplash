@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "start": "npm run envVariable && nodemon -L",
+    "start": "nodemon -L",
     "test": "jest",
     "seed": "npx ts-node ./prisma/seed.ts",
     "envVariable": "npx ts-node  envVariable.ts"

@@ -164,7 +164,7 @@ This command will initiate the deployment process and ensure smooth execution of
 
 ## Contact
 
-- Website [emilyportfolio.netlify.app](https://emilyportfolio.netlify.app/)
+- Website [emilycruz.xyz](https://emilycruz.xyz)/
 - GitHub [@emily883](https://github.com/emily883)
 - Linkedin [Emily Cruz Gutiérrez](https://www.linkedin.com/in/emily-fullstack/)
 
